@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 179 100% 99.6%;
+    --foreground: 170 7% 23%;
+
+    --card: 179 100% 99.6%;
+    --card-foreground: 170 7% 23%;
+
+    --popover: 179 100% 99.6%;
+    --popover-foreground: 170 7% 23%;
+
+    --primary: 170 7% 23%;
+    --primary-foreground: 179 100% 99.6%;
+
+    --secondary: 140 2% 65%;
+    --secondary-foreground: 170 7% 23%;
+
+    --muted: 140 2% 90%;
+    --muted-foreground: 140 2% 50%;
+
+    --accent: 26 82% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 140 2% 85%;
+    --input: 140 2% 85%;
+    --ring: 26 82% 47%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --whatsapp: 142 70% 40%;
+  }
+
+  .dark {
+    --background: 170 7% 23%;
+    --foreground: 179 100% 99.6%;
+    --card: 170 10% 18%;
+    --card-foreground: 179 100% 99.6%;
+    --popover: 170 10% 18%;
+    --popover-foreground: 179 100% 99.6%;
+    --primary: 179 100% 99.6%;
+    --primary-foreground: 170 7% 23%;
+    --secondary: 140 2% 30%;
+    --secondary-foreground: 179 100% 99.6%;
+    --muted: 140 2% 30%;
+    --muted-foreground: 140 2% 65%;
+    --accent: 26 82% 47%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 140 2% 30%;
+    --input: 140 2% 30%;
+    --ring: 26 82% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+  font-size: 1.12em;
+  line-height: 1.85;
+}
+
+/* Fade-in section animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger item animation */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.stagger-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero text stagger */
+.hero-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 0.7s ease-out forwards;
+}
+
+.hero-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-stagger > *:nth-child(2) { animation-delay: 0.3s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.5s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section gradient divider */
+.section-divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, hsl(26 82% 47% / 0.6), hsl(170 50% 40% / 0.4), transparent);
+}
+
+/* Diagonal clip on hero bottom */
+.hero-clip {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+
+/* Partner logo grayscale hover */
+.partner-logo {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+
+.partner-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Founder accent bar */
+.founder-accent {
+  position: relative;
+}
+
+.founder-accent::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, hsl(26 82% 47%), hsl(170 50% 40%));
+}
+
+.rtl .founder-accent::before {
+  left: auto;
+  right: 0;
+}
